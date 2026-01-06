@@ -27,3 +27,62 @@ are intentionally out of scope.
 
 ## Project Structure
 
+mbedded-json-serializer/
+├── include/
+│ └── json_serializer.h // Public API and data structures
+├── src/
+│ └── json_serializer.c // JSON serialization implementation
+├── examples/
+│ └── main.c // Demo application
+└── README.md
+
+
+Description
+
+Serializes the provided GatewayPayload structure into a JSON string.
+
+Parameters
+
+input – Pointer to populated input data structure
+
+output_buffer – Caller-provided buffer for JSON output
+
+buffer_size – Size of the output buffer
+
+Return Values
+
+0 → Success
+
+-1 → Invalid input arguments
+
+-2 → Output buffer too small
+
+Example JSON Output
+[
+  {
+    "gatewayId":"gateway_1234",
+    "date":"1970-01-01",
+    "deviceType":"stromleser",
+    "interval_minutes":15,
+    "total_readings":1,
+    "values":{
+      "device_count":1,
+      "readings":[
+        {
+          "media":"water",
+          "meter":"waterstarm",
+          "deviceId":"stromleser_50898527",
+          "unit":"m3",
+          "data":[
+            {
+              "timestamp":"1970-01-01 00:00",
+              "meter_datetime":"1970-01-01 00:00",
+              "total_m3":107.752,
+              "status":"OK"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
